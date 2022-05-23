@@ -12,6 +12,7 @@ import javax.validation.constraints.Email;
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 @Entity
 @Table(name = "users", uniqueConstraints = {
         @UniqueConstraint(columnNames = {
@@ -45,11 +46,12 @@ public class User {
 
     private String address;
 
-    private enum gender{
+    private enum gender {
         MALE,
         FEMALE,
         ELSE
     }
+
     @JsonIgnore
     @NotBlank
     @Size(min = 6, max = 100)

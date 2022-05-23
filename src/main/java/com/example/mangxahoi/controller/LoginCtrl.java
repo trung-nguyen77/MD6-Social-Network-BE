@@ -40,7 +40,7 @@ public class LoginCtrl {
     RoleServiceImpl roleService;
 
     @Autowired
-    AuthenticationManager authenticationManager;
+    AuthenticationManager auth;
 
     @Autowired
     JwtProvider jwtProvider;
@@ -86,8 +86,7 @@ public class LoginCtrl {
     }
     @PostMapping("/signin")
     public ResponseEntity<?> login (@Valid @RequestBody SignInForm signInForm) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(signInForm.getUsername(), signInForm.getPassword()));
+        Authentication authentication = auth.authenticate(new UsernamePasswordAuthenticationToken(signInForm.getUsername(), signInForm.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtProvider.createToken(authentication);

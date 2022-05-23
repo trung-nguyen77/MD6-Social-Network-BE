@@ -17,5 +17,9 @@ public class Image {
 
     @ManyToOne
     Post post;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
 

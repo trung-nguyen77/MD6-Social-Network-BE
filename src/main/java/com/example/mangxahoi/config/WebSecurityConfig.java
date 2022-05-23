@@ -47,6 +47,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public AuthenticationManager authenticationManager() throws Exception {
         return super.authenticationManager();
+    //        method authenticationManager trả lại 1 object Authentication,
+//        nếu authentication có thể xác thực đầu vào là principal hợp lệ.
+//        Throw exception AuthenticationException nếu đầu vào là principal không hợp lệ.
+//        Trả lại giá trị null nếu nó không thể xử lý.
     }
 
     @Override

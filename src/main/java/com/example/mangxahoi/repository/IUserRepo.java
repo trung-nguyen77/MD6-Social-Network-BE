@@ -13,13 +13,13 @@ import java.util.Optional;
 public interface IUserRepo extends JpaRepository<User, Long> {
 
     Optional<User> findByUsername(String name);// tim kiem user co ton tai ko
-    Boolean existsByUsername(String username);// kiem tra co ton tai hay ko
-    Boolean existsByEmail(String email);// kiem tra email
-
+    Boolean existsByUsername(String username);// kiem tra user co ton tai hay ko
+    Boolean existsByEmail(String email);// kiem tra email co ton tai hay ko
     List<User> findAll();
 
+
     @Query(value = "select * from user where role_id = :id", nativeQuery = true)
-    List<User> findUserByRole(@Param("id") long id);
+    List<User> findUserByRole(@Param("id") Long id);
     // tim kiếm những tk gần giống tên nhập vào
     @Query(value = "select * from user where name = :name and like concat('%',:name,'%')", nativeQuery = true)
     List<User> findUserByUsername(@Param("name") String name);
